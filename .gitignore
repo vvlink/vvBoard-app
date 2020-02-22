@@ -129,4 +129,6 @@ dmypy.json
 .pyre/
 
 # 去除mac中的奇怪文件
-*.DS_Store 
+*.DS_Store
+
+*.gitignore
