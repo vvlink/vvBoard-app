@@ -11,8 +11,6 @@
 import threading
 from flask import Flask
 from flask import request
-from xugu import Pin
-from xugu import Servo
 import time
 import json
 import socket
@@ -143,5 +141,9 @@ def run():
 
 t=threading.Thread(target=run)
 t.start()
+#启动gpio的服务监视
+'''
+from xugu import Pin
+from xugu import Servo
 xugu()
-
+'''
