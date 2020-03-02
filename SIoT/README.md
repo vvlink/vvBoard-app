@@ -2,7 +2,7 @@
 
 ### 简介
 
-SIoT为一个为教育定制的跨平台的MQTT服务器程序，S指科学（Science）、简单（simple）的意思。SIoT为“虚谷物联”项目的核心软件，是为了帮助中小学生理解物联网原理，并且能够基于物联网技术开发各种创意应用，尤其是用于科学数据采集。
+SIoT为一个为教育定制的跨平台的MQTT服务器程序，S指科学（Science）、简单（Simple）的意思。SIoT为“虚谷物联”项目的核心软件，是为了帮助中小学生理解物联网原理，并且能够基于物联网技术开发各种创意应用，尤其是用于科学数据采集。
 
 虚谷物联和虚谷号都是虚谷计划中的核心项目。虚谷号内置了SIoT，开机即可使用。
 
@@ -20,6 +20,7 @@ SIoT服务使用的是8080端口，使用虚谷号IP+8080端口即可使用。
 ### SIoT软件下载地址
 
 |http://mindplus.dfrobot.com.cn/siot
+
 |https://github.com/vvlink/SIoT/tree/master/software/SIoT1.2
 
 ### SIoT文档的阅读地址
