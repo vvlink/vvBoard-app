@@ -15,6 +15,7 @@ WebGPIO采用WebAPI的形式，获取和控制虚谷号板载Arduino芯片的引
 2020年10月，发布2.0版。
 
 	- 改用pinpong库，可以移植到任何一台接上Arduino的PC或者迷你电脑。
+	- 因为线程冲突，如果使用非虚谷号的电脑，请不要放在jupyter里运行。
 	- pinpong库介绍：https://github.com/DFRobot/pinpong-docs。
 
 2020年2月，发布1.1、1.2版。
