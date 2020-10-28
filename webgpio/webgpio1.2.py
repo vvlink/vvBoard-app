@@ -3,7 +3,7 @@
 """
 @Description: WebGPIO For vvBoard
 @author: xiezuoru,james,yyp
-@version: 1.1
+@version: 1.2
 @Date:2020.2.21
 @Link: https://github.com/vvlink/vvBoard-app/tree/master/webgpio
 """
