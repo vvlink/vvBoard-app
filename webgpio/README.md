@@ -8,9 +8,14 @@ WebGPIO采用WebAPI的形式，获取和控制虚谷号板载Arduino芯片的引
 
 默认端口：1024
 
-当前版本为1.2。
+当前版本为2.0。
 
 ## 升级说明
+
+2020年10月，发布2.0版。
+
+	- 改用pinpong库，可以移植到任何一台接上Arduino的PC或者迷你电脑。
+	- pinpong库介绍：https://github.com/DFRobot/pinpong-docs。
 
 2020年2月，发布1.1、1.2版。
 
