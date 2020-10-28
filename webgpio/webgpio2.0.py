@@ -3,7 +3,7 @@
 """
 @Description: WebGPIO For vvBoard
 @author: xiezuoru,james,yyp,ndfrobot
-@version: 1.1
+@version: 2.0
 @Date:2020.10.24
 @Link: https://github.com/vvlink/vvBoard-app/tree/master/webgpio
 """
@@ -44,11 +44,11 @@ def web_gpio_get(request):
             data = {"pin":666,"error_code":0, "msg":re_html}
             return jsondumps(data)
     pin=str.upper(pin)
-    print("pin = ",pin) 
+    print("pin = ",pin)
     if not (pin in pin_D_list or pin in pin_A_list):
         data = {"pin":pin,"error_code":1, "msg":"error,invalid Pin"}
         return jsondumps(data)
-    
+
     if pin in pin_D_list:
         ret = 0
         time.sleep(0.5)
@@ -59,7 +59,7 @@ def web_gpio_get(request):
         time.sleep(0.5)
         data = {"pin":pin,"error_code":0,"msg":str(value)}
         return jsondumps(data)
-        
+
 def web_gpio_post(request):
     global types,pin,value
     pin=request.values.get('pin')
@@ -77,7 +77,7 @@ def web_gpio_post(request):
         data = {"pin":pin,"error_code":1,"msg":"缺少必要参数"}
         return jsondumps(data)
     pin=str.upper(str(pin))
-    types=str.lower(str(types))                      
+    types=str.lower(str(types))
     if not (pin in pin_D_list or pin in pin_A_list):
         data = {"pin":pin,"error_code":1,"msg":"error,invalid Pin"}
         return jsondumps(data)
@@ -89,7 +89,7 @@ def web_gpio_post(request):
     if not (types in type_D_list or types in type_A_list or types in type_S_list):
         data = {"pin":pin,"error_code":1,"msg":"error,Type is wrong"}
         return jsondumps(data)
-    data = {"pin":pin,"error_code":0,"msg":"success,set "+pin+" to "+str(value)+" with "+types+" mode"} 
+    data = {"pin":pin,"error_code":0,"msg":"success,set "+pin+" to "+str(value)+" with "+types+" mode"}
     return jsondumps(data)
 
 @app.route('/help/',methods=["POST","GET"])
@@ -119,7 +119,7 @@ def gpiohelp():
 def xugu():
     global value,ret,types,pin
     while True:
-        if ret == 0:    
+        if ret == 0:
             xugu_pin=Pin(eval('Pin.'+pin),Pin.IN)
             value=xugu_pin.read_digital()
             print('read_digital:'+str(value))
@@ -145,7 +145,7 @@ def xugu():
             print('write_angle:'+str(value))
             types=None
 
-def jsondumps(data):        
+def jsondumps(data):
     return json.dumps(data,indent=4,ensure_ascii=False,sort_keys=True)
 def get_host_ip():
     try:
@@ -155,9 +155,9 @@ def get_host_ip():
     finally:
         s.close()
     return ip
-                
+
 def run():
-    app.run(host=ip,port=1024,debug=False)   
+    app.run(host=ip,port=1024,debug=False)
 
 #启动pinpong对于GPIO的控制
 from pinpong.board import Board,Pin,Servo
