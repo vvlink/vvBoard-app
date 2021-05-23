@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
   <title>网络扫描仪（WebScan for vvBoard） 0.1</title>
   <style type="text/css">
     label,option { font-size:14px }
-    td { font-size:12px }
+    td { font-size:13px }
     div {
       border-radius: 5px;
       background-color: #f2f2f2;
@@ -19,17 +20,21 @@
       color: white;
       padding: 5px 10px;
       border: none;
-      border-radius: 4px;
+      border-radius: 10px;
       cursor: pointer;
     }
     button:hover {
       background-color: #666666;
     }
+	select {
+	  font-size:15px;
+	  padding: 5px 10px;
+	}
   </style>
 </head>
 <body>
 <div align="center"><h1>网络共享扫描仪</h1></div>
-<div align="center"><a href="/list" target="result">查看已扫描图片</a>&nbsp;&nbsp;<a href="/cls" target="result">批量删除</a></div>
+<div align="center"><a href="/list" target="result">查看已扫描图片</a>&nbsp;&nbsp;<a target="result" href="javascript:if(confirm('确实要删除所有已扫描文件吗?'))location='/cls'">批量删除</a>&nbsp;&nbsp;<a target="result" href="/plus">合并下载</a></div>
   <form action="/scan" method="get" target="result">
   <div align="center">
   <table border="0"><tr align="center">
@@ -41,8 +46,8 @@
       </tr></table></div>
   </form>
   <div class="row" width="100%">
-    <iframe name="result" frameborder="0" scrolling="auto" src="" width="100%" height="350"></iframe>
+    <iframe name="result" frameborder="0" scrolling="auto" src="" width="100%" height="400"></iframe>
 </div>
-<div style="text-align:center;font:11px" width="100%">基于虚谷号的网络扫描仪</div>
+<div align="center" width="100%">基于虚谷号的网络扫描仪</div>
 </body>
 </html>

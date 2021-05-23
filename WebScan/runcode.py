@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 import os,shutil,time
 import itertools as it, glob
-from flask import Flask, render_template, send_from_directory,request
+from flask import *
 import importlib,sys
 importlib.reload(sys)
 from PIL import Image
 
 app = Flask(__name__)
 #扫描文件的保存目录
-home_path='/static/scan/'
-scan_path=os.getcwd() + home_path
+home_path = '/static/scan/'
+# real_path = os.getcwd()
+real_path = os.path.dirname(os.path.abspath(__file__))
+scan_path = real_path + home_path
 
 def multiple_file_types(*patterns):
     return it.chain.from_iterable(glob.iglob(scan_path + pattern) for pattern in patterns)
@@ -47,14 +49,33 @@ def docls():
     os.mkdir(scan_path)
     html="<p style='text-align:center'>文件清理成功！</p>"
     return html
+
+@app.route('/plus')
+def plus():
+    # 扩展功能
+    if request.values.get('p'):
+        p=request.values.get('p')
+        if p=="pdf":
+            f2='output.pdf'
+            cmd="convert "+ scan_path +"scan*.* "+ scan_path + f2
+            os.system(cmd)
+            html="<div align='center'><a href='" + home_path + f2 +"' target='_blank'>打包成功，点击下载</a></div>"
+        elif p=="zip":
+            f2='scan.zip'
+            cmd="zip -j "+ scan_path + f2 +" "+ scan_path +"*.*"
+            os.system(cmd)
+            html="<div align='center'><a href='"+ home_path + f2 +"' target='_blank'>打包成功，点击下载</a></div>"
+    else:
+        html=render_template('plus.html')
+    return html
+
 @app.route('/list')
 def filelist():
     maps = {}
     scanlist=multiple_file_types("*.jpg","*.png","*.pdf")
     for fname in scanlist:
         if os.path.isfile(fname):
-            #key = fname.decode('utf-8')
-            key = fname.replace(os.getcwd(),"")
+            key = fname.replace(real_path,"")
             attribute = {}
             attribute["size"]=round(os.path.getsize(fname)/1024,2)
             ftime=time.localtime(os.path.getctime(fname)) #文件创建时间
