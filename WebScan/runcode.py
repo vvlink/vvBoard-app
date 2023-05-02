@@ -4,7 +4,6 @@ import itertools as it, glob
 from flask import *
 import importlib,sys
 importlib.reload(sys)
-from PIL import Image
 
 app = Flask(__name__)
 #扫描文件的保存目录
